@@ -82,9 +82,15 @@ In order for the logstash-logback-encoder to broadcast to ELK the SLF4j logging 
 
 This means your project should use:
 ```
-private static final org.slf4j.Logger LOG = org.slf4j.LoggerFactory.getLogger(Exmple.class);
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+...
+private static final Logger LOG = LoggerFactory.getLogger(Exmple.class);
 ```
 rather than
 ```
+import import org.neo4j.logging.Log;
+import com.graphaware.common.log.LoggerFactory;
+...
 private static final Log LOG = LoggerFactory.getLogger(Exmple.class);
 ```
