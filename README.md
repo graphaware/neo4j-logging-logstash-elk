@@ -5,23 +5,19 @@ This sample demonstrates how to configure Neo4j to use Logback to broadcast to E
 
 Note: This documentation is a work in progress.
 
-### 1) External Dependencies
+### 1) Build
 --------------------
 
-The logstash-logback-encoder requires several third party jars to broadcast to ELK. They are:
+The neo4j-logback-elk project builds an uber jar containing all of the transitive dependencies required for logstash-logback-encoder to function. This uber jar is then placed into the $neo4j_home/plugins directory, seemlessly providing Neo4j with all of the dependencies in one deployment. To do this:
+
+1) Clone this repository
+
+2) Open a shell and change into the newly cloned repository from step #1
+
+3) Execute: 
 ```
-cd $neo4j_home/lib
-
-wget http://central.maven.org/maven2/net/logstash/logback/logstash-logback-encoder/4.8/logstash-logback-encoder-4.8.jar
-wget http://central.maven.org/maven2/ch/qos/logback/logback-core/1.1.6/logback-core-1.1.6.jar
-wget http://central.maven.org/maven2/ch/qos/logback/logback-classic/1.1.6/logback-classic-1.1.6.jar
-wget http://central.maven.org/maven2/ch/qos/logback/logback-access/1.1.6/logback-access-1.1.6.jar
-wget http://central.maven.org/maven2/org/slf4j/slf4j-api/1.7.7/slf4j-api-1.7.7.jar
-wget http://central.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.2.3/jackson-databind-2.2.3.jar
-wget http://central.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.3.3/jackson-annotations-2.3.3.jar
-wget http://central.maven.org/maven2/com/lmax/disruptor/3.3.4/disruptor-3.3.4.jar
-wget http://central.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.3.3/jackson-core-2.3.3.jar
-
+mvn clean install
+cp target/neo4j-logback-elk-*.jar $neo4j_home/plugin
 ```
 
 ### 2) Configuration
