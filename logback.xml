@@ -1,0 +1,80 @@
+<configuration>
+
+   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+      <encoder>
+         <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+      </encoder>
+   </appender>
+   
+   <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+      <file>../logs/logback.txt</file>
+      <append>true</append>
+      <encoder>
+         <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+      </encoder>
+   </appender>
+   
+	<appender name="stash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+	
+	    <destination>192.168.99.100:5000</destination>
+		<keepAliveDuration>5 minutes</keepAliveDuration>
+		
+	    <!-- encoder is required -->
+	    <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+	    	<customFields>{"appname":"myWebservice","roles":["customerorder","auth"],"buildinfo":{"version":"Version 0.1.0-SNAPSHOT","lastcommit":"75473700d5befa953c45f630c6d9105413c16fe1"}}</customFields>
+	    </encoder>
+
+	</appender>
+	   
+<!-- From https://balamaci.ro/java-app-monitoring-with-elk-logstash  -->	   
+	<appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+	
+	    <destination>192.168.99.100:5000</destination>
+	
+	    <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+	        <providers>
+	            <mdc/> <!-- MDC variables on the Thread will be written as JSON fields--> 
+	            <context/> <!--Outputs entries from logback's context -->                               
+	            <version/> <!-- Logstash json format version, the @version field in the output-->
+	            <logLevel/>
+	            <loggerName/>
+	
+	            <pattern>
+	             <pattern> <!-- we can add some custom fields to be sent with all the log entries. -->                  
+	                {      <!--make filtering easier in Logstash-->
+	                "appName": "elk-testdata",<!--or searching with Kibana-->
+	                "appVersion": "1.0"
+	                }
+	             </pattern>
+	            </pattern>
+	
+	            <threadName/>
+	            <message/>
+	
+	            <logstashMarkers/> <!-- Useful so we can add extra information for specific log lines as Markers--> 
+	            <arguments/> <!--or through StructuredArguments-->
+	
+	            <stackTrace/>
+	        </providers>
+	    </encoder>
+	</appender>
+
+	<root level="debug">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="FILE" />      
+		<appender-ref ref="stash" />
+	 </root>
+
+	<logger name="com.graphaware" level="DEBUG">
+	        <appender-ref ref="STDOUT" />
+	        <appender-ref ref="FILE" />      
+	        <appender-ref ref="stash" />
+	</logger>
+	
+	<logger name="org.neo4j" level="DEBUG">
+	        <appender-ref ref="STDOUT" />
+	        <appender-ref ref="FILE" />      
+	        <appender-ref ref="stash" />
+	</logger>
+
+</configuration>
