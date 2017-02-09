@@ -75,3 +75,16 @@ For convenient reference, an example logback.xml that outputs to the console, a 
 ```
 
 Please tailor the above examples to your specific needs. 
+
+### 3) Code (NOTE: Still being validated)
+--------------------
+In order for the logstash-logback-encoder to broadcast to ELK the SLF4j logging framework must be used rather than GraphAware's typically used org.neo4j.logging.Log and com.graphaware.common.log.LoggerFactory.
+
+This means your project should use:
+```
+private static final org.slf4j.Logger LOG = org.slf4j.LoggerFactory.getLogger(Exmple.class);
+```
+rather than
+```
+private static final Log LOG = LoggerFactory.getLogger(Exmple.class);
+```
