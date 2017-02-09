@@ -27,7 +27,7 @@ wget http://central.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.3
 ### 2) Configuration
 --------------------
 
-Neo4j must be configured to make use of Logback and the logstash-logback-encoder. To do this, copy the logback.xml file contained within this project to your Neo4j's /config directory. For example:
+Neo4j must be configured to make use of Logback and the logstash-logback-encoder. To do this, copy the logback.xml file contained within this project to your Neo4j's config directory. For example:
 ```
 cp logback.xml $neo4j_home/config
 ```
