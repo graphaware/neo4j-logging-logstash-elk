@@ -5,7 +5,7 @@ This sample demonstrates how to configure Neo4j to use Logback to broadcast to E
 
 Note: This documentation is a work in progress.
 
-1) External Dependencies
+### 1) External Dependencies
 --------------------
 
 The logstash-logback-encoder requires several third party jars to broadcast to ELK. They are:
@@ -24,7 +24,7 @@ wget http://central.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.3
 
 ```
 
-2) Configuration
+### 2) Configuration
 --------------------
 
 Neo4j must be configured to make use of Logback and the logstash-logback-encoder. To do this, copy the logback.xml file contained within this project to your Neo4j's /config directory. For example:
