@@ -26,7 +26,7 @@ cp target/neo4j-logback-elk-*.jar $neo4j_home/plugin
 ### 2) Configuration
 --------------------
 
-Neo4j must be configured to make use of Logback and the logstash-logback-encoder. To do this, copy the example below or the logback.xml file contained within this project to your Neo4j's config directory. For example:
+Neo4j must be configured to make use of Logback and the logstash-logback-encoder. To do this, copy the example below or the logback.xml file contained within this project to your Neo4j's config directory and customize as needed. For example:
 ```
 cp logback.xml $neo4j_home/config
 ```
