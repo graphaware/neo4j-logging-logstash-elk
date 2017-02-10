@@ -70,6 +70,42 @@
 			<version>${jackson.version}</version>
 		</dependency>
 
+<!-- TODO eric: Determine which of the below are actually required -->
+<!-- https://www.mkyong.com/spring-mvc/spring-mvc-logback-slf4j-example -->
+<!-- 1. exclude commons-logging from spring
+-->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>4.2.2.RELEASE</version>
+			<exclusions>
+			  <exclusion>
+				<groupId>commons-logging</groupId>
+				<artifactId>commons-logging</artifactId>
+			  </exclusion>
+			</exclusions>
+		</dependency>
+		
+		<!-- 2. Bridge logging from JCL to SLF4j-->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>1.7.7</version>
+		</dependency>
+		
+		<!-- 3. logback -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+			<version>1.1.6</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.1.6</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
