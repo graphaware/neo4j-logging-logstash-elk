@@ -14,18 +14,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
+	<groupId>com.graphaware.neo4j</groupId>
 	<artifactId>neo4j-logback-elk</artifactId>
 	<version>1.0-SNAPSHOT</version>
-	
-<!-- TODO: Decide on if the parent is needed or not -->	
-	<groupId>com.graphaware.neo4j</groupId>
-<!--
-	<parent>
-		<groupId>com.graphaware.neo4j</groupId>
-		<artifactId>module-parent</artifactId>
-		<version>3.0.7.44</version>
-	</parent>
--->
+
 	<name>Neo4j Logback ELK</name>
 	<description>Neo4j Logback ELK</description>
 	
