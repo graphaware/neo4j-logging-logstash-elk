@@ -29,6 +29,10 @@
 	<name>Neo4j Logback ELK</name>
 	<description>Neo4j Logback ELK</description>
 	
+	<properties>
+		<jackson.version>2.2.3</jackson.version>
+	</properties>
+        	
 	<dependencies>
 
 		<!-- https://mvnrepository.com/artifact/net.logstash.logback/logstash-logback-encoder -->
@@ -57,21 +61,21 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>2.2.3</version>
+			<version>${jackson.version}</version>
 		</dependency>
 	
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-annotations</artifactId>
-			<version>2.2.3</version>
+			<version>${jackson.version}</version>
 		</dependency>
 	
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>
-			<version>2.2.3</version>
+			<version>${jackson.version}</version>
 		</dependency>
 
 	</dependencies>
