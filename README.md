@@ -1,14 +1,16 @@
 neo4j-logback-elk
 =====================
 
-This sample demonstrates how to configure Neo4j to use Logback to broadcast to ELK, making use of logstash-logback-encoder and Neo4j Enterprise 3.0.6.
+This sample demonstrates how to configure Neo4j to use Logback to broadcast log statements to ELK. Note that this is a Neo4j-wide configuration versus configuring an individual module/plugin to broadcast logs. 
+
+This instructions have been tested using logstash-logback-encoder 4.8 and Neo4j Enterprise 3.0.6.
 
 Note: This documentation is a work in progress.
 
 ### 1) Build
 --------------------
 
-The neo4j-logback-elk project builds an uber jar containing all of the transitive dependencies required for logstash-logback-encoder to function. This uber jar is then placed into the $neo4j_home/plugins directory, seemlessly providing Neo4j with all of the dependencies in one deployment. To do this:
+The neo4j-logback-elk project builds an uber jar containing all of the transitive dependencies required for the logstash-logback-encoder to function. This uber jar is then placed into the $neo4j_home/plugins directory, seamlessly providing Neo4j with all of the dependencies in one deployment. To do this:
 
 1) Clone this repository
 ```
@@ -23,15 +25,12 @@ mvn clean install
 cp target/neo4j-logback-elk-*.jar $neo4j_home/plugin
 ```
 
-### 2) Configuration
+### 2) Configure
 --------------------
 
-Neo4j must be configured to make use of Logback and the logstash-logback-encoder. To do this, copy the example below or the logback.xml file contained within this project to your Neo4j's config directory and customize as needed. For example:
-```
-cp logback.xml $neo4j_home/config
-```
+Neo4j (or perhaps more accurately, Logback) must be configured to make use of the logstash-logback-encoder. To do this, copy either the example below or the logback.xml file contained within this project to your Neo4j's config directory and customize as needed.
 
-For convenient reference, an example logback.xml that outputs to the console, a file within $neo4j_home/logs, and broadcasts to ELK on 192.168.99.100:5000 is:
+For convenient reference, an example logback.xml that outputs to the console, a file within $neo4j_home/logs, and broadcasts to ELK on **192.168.99.100:5000** is as follows. Having performed the steps from #1 above, simply copy the below contents into $neo4j_home/config/logback.xml and restart Neo4j. 
 ```
 <configuration>
 
@@ -48,28 +47,27 @@ For convenient reference, an example logback.xml that outputs to the console, a 
          <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
       </encoder>
    </appender>
+     <appender name="stash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
 
-	<appender name="stash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-	
-	    <destination>192.168.99.100:5000</destination>
-		<keepAliveDuration>5 minutes</keepAliveDuration>
+         <destination>192.168.99.100:5000</destination>
+          <keepAliveDuration>5 minutes</keepAliveDuration>
 
-	    <encoder class="net.logstash.logback.encoder.LogstashEncoder">
-	    </encoder>
+         <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+         </encoder>
 
-	</appender>
+     </appender>
 
-	<root level="info">		
-		<appender-ref ref="STDOUT" />
-		<appender-ref ref="FILE" />
-		<appender-ref ref="stash" />
-	 </root>
+     <root level="info">          
+          <appender-ref ref="STDOUT" />
+          <appender-ref ref="FILE" />
+          <appender-ref ref="stash" />
+      </root>
 
-	<logger name="com.graphaware" level="DEBUG">
-	        <appender-ref ref="STDOUT" />
-	        <appender-ref ref="FILE" />
-	        <appender-ref ref="stash" />
-	</logger>
+     <logger name="com.graphaware" level="DEBUG">
+             <appender-ref ref="STDOUT" />
+             <appender-ref ref="FILE" />
+             <appender-ref ref="stash" />
+     </logger>
 
 </configuration>
 ```
@@ -78,7 +76,7 @@ Please tailor the above examples to your specific needs.
 
 ### 3) Code (NOTE: Still being validated)
 --------------------
-In order for the logstash-logback-encoder to broadcast to ELK the SLF4j logging framework must be used rather than GraphAware's typically used org.neo4j.logging.Log and com.graphaware.common.log.LoggerFactory.
+In order for the logstash-logback-encoder to broadcast to ELK, the SLF4j logging framework must be used rather than GraphAware's typically used org.neo4j.logging.Log and com.graphaware.common.log.LoggerFactory or Neo4j's logging classes.
 
 This means your project should use:
 ```
