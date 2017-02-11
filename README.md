@@ -18,11 +18,11 @@ Making use of this project falls into three basic steps:
 --------------------
 ## Building This Project
 
-The neo4j-logging-logstash-elk project builds an uber jar containing all of the transitive dependencies required for the logstash-logback-encoder to function. This uber jar is then placed into the $neo4j_home/plugins directory, seamlessly providing Neo4j with all of the dependencies in one deployment. To do this:
+The neo4j-logging-logstash-elk project builds an uber jar containing all of the transitive dependencies required for the logstash-logback-encoder to function. This uber jar is then placed into the $neo4j_home/plugins directory, seamlessly providing Neo4j with all of the dependencies in one deployment. To build this project and deploy it to your Neo4j instance(s):
 
 1) Clone this repository
 ```
-git clone https://github.com/graphaware/neo4j-logging-logstash-elk.git
+git clone https://github.com/graphaware/neo4j-logging-logstash-elk
 ```
 
 2) Open a shell and change into the newly cloned repository from step #1
@@ -39,7 +39,7 @@ cp target/neo4j-logging-logstash-elk-*.jar $neo4j_home/plugin
 
 Neo4j (or perhaps more accurately, Logback) must be configured to make use of the logstash-logback-encoder. To do this, copy either the example below or the logback.xml file contained within this project to your Neo4j's config directory and customize as needed.
 
-For convenient reference, an example logback.xml that outputs to the console, a file within $neo4j_home/logs, and broadcasts to ELK on **192.168.99.100:5000** is as follows. Having performed the steps from #1 above, simply copy the below contents into $neo4j_home/config/logback.xml and restart Neo4j. 
+For convenient reference, below is an example logback.xml that outputs to the console, a file within $neo4j_home/logs, and broadcasts to ELK on **192.168.99.100:5000**. Having performed the steps above to build the project, simply copy the below contents into $neo4j_home/config/logback.xml and restart Neo4j. 
 ```
 <configuration>
 
