@@ -11,7 +11,7 @@ Making use of this project falls into three basic steps:
 
 1) [Building this project](#building-this-project)
 
-2) [Configure the Neo4j instance(s)](#configure-the-neo4j-instances)
+2) [Configure Neo4j](#configure-neo4j)
 
 3) [Update your code](#update-your-code)
 
@@ -34,7 +34,7 @@ cp target/neo4j-logging-logstash-elk-*.jar $neo4j_home/plugin
 ```
 
 --------------------
-## Configure the Neo4j Instances
+## Configure Neo4j
 
 
 Neo4j (or perhaps more accurately, Logback) must be configured to make use of the logstash-logback-encoder. To do this, copy either the example below or the logback.xml file contained within this project to your Neo4j's config directory and customize as needed.
