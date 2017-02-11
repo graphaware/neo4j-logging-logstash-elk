@@ -23,7 +23,9 @@ The neo4j-logging-logstash-elk project builds an uber jar containing all of the 
 ```
 git clone https://github.com/graphaware/neo4j-logging-logstash-elk
 cd neo4j-logging-logstash-elk
+
 mvn clean install
+
 cp target/neo4j-logging-logstash-elk-*.jar $neo4j_home/plugin
 ```
 
