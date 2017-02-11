@@ -22,8 +22,8 @@
 	<description>Neo4j Logback ELK</description>
 	
 	<properties>
-		<logback.version>1.1.6</logback.version>
 		<jackson.version>2.2.3</jackson.version>
+		<logback.version>1.1.6</logback.version>		
 	</properties>
         	
 	<dependencies>
@@ -34,7 +34,7 @@
 			<artifactId>logstash-logback-encoder</artifactId>
 			<version>4.8</version>
 			<exclusions>
-				<!-- Exclude this so as to explicitly match the version required by Neo4j -->
+				<!-- Exclude these so as to explicitly match the version provided by Neo4j -->
 				<exclusion>
 					<artifactId>com.fasterxml.jackson.core</artifactId>
 					<groupId>jackson-core</groupId>
@@ -93,11 +93,11 @@
 
 	<build>
 		<plugins>
+			<!-- Create an uber jar as part of the package phase execution -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
 				<executions>
-					<!-- Run shade goal on package phase -->
 					<execution>
 						<phase>package</phase>
 						<goals>
