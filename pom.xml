@@ -22,6 +22,7 @@
 	<description>Neo4j Logback ELK</description>
 	
 	<properties>
+		<logback.version>1.1.6</logback.version>
 		<jackson.version>2.2.3</jackson.version>
 	</properties>
         	
@@ -36,15 +37,15 @@
 				<!-- Exclude this so as to explicitly match the version required by Neo4j -->
 				<exclusion>
 					<artifactId>com.fasterxml.jackson.core</artifactId>
+					<groupId>jackson-core</groupId>
+				</exclusion>				
+				<exclusion>
+					<artifactId>com.fasterxml.jackson.core</artifactId>
 					<groupId>jackson-databind</groupId>
 				</exclusion>
 				<exclusion>
 					<artifactId>com.fasterxml.jackson.core</artifactId>
 					<groupId>jackson-annotations</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>com.fasterxml.jackson.core</artifactId>
-					<groupId>jackson-core</groupId>
 				</exclusion>
 			</exclusions>
 		</dependency>
@@ -73,15 +74,21 @@
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-core</artifactId>
-			<version>1.1.6</version>
+			<version>${logback.version}</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
-			<version>1.1.6</version>
+			<version>${logback.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-access</artifactId>
+			<version>${logback.version}</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>
