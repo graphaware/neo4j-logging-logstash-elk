@@ -18,8 +18,9 @@ Making use of this project falls into three basic steps:
 --------------------
 ## Building This Project
 
-The neo4j-logging-logstash-elk project builds an uber jar containing all of the transitive dependencies required for the logstash-logback-encoder to function. This uber jar is then placed into the $neo4j_home/plugins directory, seamlessly providing Neo4j with all of the dependencies in one deployment. To build this project and deploy it to your Neo4j instance(s):
+The neo4j-logging-logstash-elk project builds an uber jar containing all of the transitive dependencies required for the logstash-logback-encoder to function. This uber jar is then placed into the $neo4j_home/plugins directory, seamlessly providing Neo4j with all of the dependencies in one deployment. 
 
+To build this project and deploy it to your Neo4j instance(s):
 ```
 git clone https://github.com/graphaware/neo4j-logging-logstash-elk
 cd neo4j-logging-logstash-elk
