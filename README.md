@@ -9,14 +9,14 @@ These instructions have been tested using logstash-logback-encoder 4.8 and Neo4j
 
 Making use of this project falls into three basic steps:
 
-1) Building this project
+1) [Building this project](#building-this-project)
 
-2) Configure the Neo4j instance(s)
+2) [Configure the Neo4j instance(s)](#configure-the-neo4j-instances)
 
-3) Updating your code
+3) [Update your code](#update-your-code)
 
 --------------------
-## 1) Building This Project
+## Building This Project
 
 The neo4j-logging-logstash-elk project builds an uber jar containing all of the transitive dependencies required for the logstash-logback-encoder to function. This uber jar is then placed into the $neo4j_home/plugins directory, seamlessly providing Neo4j with all of the dependencies in one deployment. To do this:
 
@@ -34,7 +34,7 @@ cp target/neo4j-logging-logstash-elk-*.jar $neo4j_home/plugin
 ```
 
 --------------------
-## 2) Configure the Neo4j Instance(s)
+## Configure the Neo4j Instances
 
 
 Neo4j (or perhaps more accurately, Logback) must be configured to make use of the logstash-logback-encoder. To do this, copy either the example below or the logback.xml file contained within this project to your Neo4j's config directory and customize as needed.
@@ -83,7 +83,7 @@ For convenient reference, an example logback.xml that outputs to the console, a 
 
 Please tailor the above examples to your specific needs. 
 
-## 3) Updating Your Code
+## Update Your Code
 --------------------
 In order for the logstash-logback-encoder to broadcast to ELK, the SLF4j logging framework must be used rather than GraphAware's typically used org.neo4j.logging.Log and com.graphaware.common.log.LoggerFactory or Neo4j's logging classes.
 
