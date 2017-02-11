@@ -82,13 +82,13 @@ For convenient reference, below is an example logback.xml that outputs to the co
 </configuration>
 ```
 
-Having performed the steps above to build the project, simply copy the below contents into $neo4j_home/config/logback.xml and restart Neo4j. Please tailor the above examples to your specific needs. 
+Having performed the steps above to build the project, simply copy the below contents into $neo4j_home/config/logback.xml and restart Neo4j.
 
 ## Update Your Code
 --------------------
 In order for the logstash-logback-encoder to broadcast to ELK, the SLF4j logging framework must be used rather than GraphAware's typically used org.neo4j.logging.Log and com.graphaware.common.log.LoggerFactory or Neo4j's logging classes.
 
-This means your project should use:
+This means your project must use:
 ```
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
