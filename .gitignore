@@ -1,0 +1,14 @@
+.buildpath
+.project
+.settings
+target/
+.idea/
+*.class
+*.iml
+*.iws
+*.ipr
+*.db
+.DS_Store
+.classpath
+/nbproject/
+dependency-reduced-pom.xml
