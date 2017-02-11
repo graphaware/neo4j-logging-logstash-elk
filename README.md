@@ -3,10 +3,9 @@ neo4j-logging-logstash-elk
 
 The neo4j-logging-logstash-elk project provides a concrete implementation and documentation of how to configure [Neo4j](https://neo4j.com) to make use of [Logback](https://logback.qos.ch/) and [LogStash](https://www.elastic.co/products/logstash) to broadcast log statements to [ElasticSearch](https://www.elastic.co/)/[LogStash](https://www.elastic.co/products/logstash)/[Kibana](https://www.elastic.co/products/kibana) (ELK). 
 
-This implementation is a Neo4j-wide configuration versus configuring an individual module/plugin to broadcast logs. 
+This implementation and configuration is performed at the Neo4j level, as opposed to configuring individual Neo4j module(s)/plugin(s), making the broadcasting of log statements to ELK available to all participating Neo4j modules/plugins. 
 
 These instructions have been tested using logstash-logback-encoder 4.8 and Neo4j Enterprise 3.0.6.
-
 
 ### 1) Build
 --------------------
