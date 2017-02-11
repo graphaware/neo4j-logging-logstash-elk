@@ -79,7 +79,7 @@ For convenient reference, below is an example logback.xml that outputs log state
 </configuration>
 ```
 
-Having performed the steps above to build the project, simply copy the below contents into $neo4j_home/config/logback.xml and restart Neo4j.
+Having performed the steps above to build the project, simply copy the above sample into $neo4j_home/config/logback.xml and restart Neo4j.
 
 ## Update Your Code
 --------------------
