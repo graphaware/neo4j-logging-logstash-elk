@@ -1,20 +1,21 @@
-neo4j-logback-elk
+neo4j-logstash-elk
 =====================
 
-This sample demonstrates how to configure Neo4j to use Logback to broadcast log statements to ELK. Note that this is a Neo4j-wide configuration versus configuring an individual module/plugin to broadcast logs. 
+The neo4j-logstash-elk project provides a concrete implementation and documentation of how to configure [Neo4j](https://neo4j.com) to make use of [Logback](https://logback.qos.ch/) and [LogStash](https://www.elastic.co/products/logstash) to broadcast log statements to [ElasticSearch](https://www.elastic.co/)/[LogStash](https://www.elastic.co/products/logstash)/[Kibana](https://www.elastic.co/products/kibana) (ELK). 
 
-This instructions have been tested using logstash-logback-encoder 4.8 and Neo4j Enterprise 3.0.6.
+This implementation is a Neo4j-wide configuration versus configuring an individual module/plugin to broadcast logs. 
 
-Note: This documentation is a work in progress.
+These instructions have been tested using logstash-logback-encoder 4.8 and Neo4j Enterprise 3.0.6.
+
 
 ### 1) Build
 --------------------
 
-The neo4j-logback-elk project builds an uber jar containing all of the transitive dependencies required for the logstash-logback-encoder to function. This uber jar is then placed into the $neo4j_home/plugins directory, seamlessly providing Neo4j with all of the dependencies in one deployment. To do this:
+The neo4j-logstash-elk project builds an uber jar containing all of the transitive dependencies required for the logstash-logback-encoder to function. This uber jar is then placed into the $neo4j_home/plugins directory, seamlessly providing Neo4j with all of the dependencies in one deployment. To do this:
 
 1) Clone this repository
 ```
-git clone https://github.com/graphaware/neo4j-logback-elk.git
+git clone https://github.com/graphaware/neo4j-logstash-elk.git
 ```
 
 2) Open a shell and change into the newly cloned repository from step #1
@@ -22,7 +23,7 @@ git clone https://github.com/graphaware/neo4j-logback-elk.git
 3) Execute: 
 ```
 mvn clean install
-cp target/neo4j-logback-elk-*.jar $neo4j_home/plugin
+cp target/neo4j-logstash-elk-*.jar $neo4j_home/plugin
 ```
 
 ### 2) Configure
