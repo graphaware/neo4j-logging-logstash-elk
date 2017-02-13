@@ -92,13 +92,13 @@ This means that for your log statements to be broadcast to ELK your project **mu
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;</b>
 ...
-private static final Logger LOG = LoggerFactory.getLogger(Exmple.class);
+private static final Logger LOG = LoggerFactory.getLogger(Example.class);
 </pre>
 rather than
 ```
 import import org.neo4j.logging.Log;
 import com.graphaware.common.log.LoggerFactory;
 ...
-private static final Log LOG = LoggerFactory.getLogger(Exmple.class);
+private static final Log LOG = LoggerFactory.getLogger(Example.class);
 ```
 After performing the above code updates as well as following all sections of this document, rebuild and redeploy your Neo4j module/plugin and restart Neo4j. You will now see log statements appear in your console, the $neo4j_home/log/logback.log, and within your running ELK instance available at [http://192.168.99.100:5601](http://192.168.99.100:5601).  
