@@ -87,7 +87,8 @@ Having performed the steps above to build the project, simply copy the above sam
 
 In order for the logstash-logback-encoder to broadcast to ELK, the [SLF4j](https://www.slf4j.org) logging framework must be used rather than GraphAware's typically used org.neo4j.logging.Log, com.graphaware.common.log.LoggerFactory, or org.neo4j.logging.LogProvider classes.
 
-This means that for your log statements to be broadcast to ELK your project **must** use:<pre><b>
+This means that for your log statements to be broadcast to ELK your project **must** use:
+<pre><b>
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;</b>
 ...
