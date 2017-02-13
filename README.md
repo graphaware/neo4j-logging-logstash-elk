@@ -91,8 +91,7 @@ This means that for your log statements to be broadcast to ELK your project **mu
 <pre>
 <b>
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-</b>
+import org.slf4j.LoggerFactory;</b>
 ...
 private static final Logger LOG = LoggerFactory.getLogger(Exmple.class);
 </pre>
