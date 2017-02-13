@@ -36,7 +36,7 @@ cp target/neo4j-logging-logstash-elk-*.jar $neo4j_home/plugin
 
 Neo4j (or perhaps more accurately, Logback) must be configured to make use of the logstash-logback-encoder. To do this, copy either the example below or the logback.xml file contained within this project to your Neo4j's config directory and customize as needed.
 
-For convenient reference, below is an example logback.xml that outputs log statements to the console, to $neo4j_home/logs/logback.log, and broadcasts to ELK on **192.168.99.100:5000**. 
+For convenient reference, below is an example logback.xml that outputs log statements to the console, to a file located in $neo4j_home/logs/logback.log, and broadcasts to ELK on **192.168.99.100:5000**. 
  
 ```
 <configuration>
@@ -85,12 +85,12 @@ Having performed the steps above to build the project, simply copy the above sam
 
 ## Update Your Code
 
-In order for the logstash-logback-encoder to broadcast to ELK, the SLF4j logging framework must be used rather than GraphAware's typically used org.neo4j.logging.Log, com.graphaware.common.log.LoggerFactory, or org.neo4j.logging.LogProvider classes.
+In order for the logstash-logback-encoder to broadcast to ELK, the [SLF4j](https://www.slf4j.org) logging framework must be used rather than GraphAware's typically used org.neo4j.logging.Log, com.graphaware.common.log.LoggerFactory, or org.neo4j.logging.LogProvider classes.
 
-This means your project **must** use:
+This means that for your log statements to be broadcast to ELK your project **must** use:
 ```
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+**import org.slf4j.Logger;**
+**import org.slf4j.LoggerFactory;**
 ...
 private static final Logger LOG = LoggerFactory.getLogger(Exmple.class);
 ```
