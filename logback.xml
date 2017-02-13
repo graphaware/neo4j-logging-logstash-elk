@@ -35,11 +35,5 @@
 	        <appender-ref ref="FILE" />
 	        <appender-ref ref="stash" />
 	</logger>
-	
-	<logger name="org.neo4j" level="DEBUG">
-	        <appender-ref ref="STDOUT" />
-	        <appender-ref ref="FILE" />
-	        <appender-ref ref="stash" />
-	</logger>
 
 </configuration>
