@@ -54,7 +54,8 @@ For convenient reference, below is an example logback.xml that outputs log state
          <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
       </encoder>
    </appender>
-     <appender name="stash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+
+   <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
 
          <destination>192.168.99.100:5000</destination>
           <keepAliveDuration>5 minutes</keepAliveDuration>
@@ -62,19 +63,19 @@ For convenient reference, below is an example logback.xml that outputs log state
          <encoder class="net.logstash.logback.encoder.LogstashEncoder">
          </encoder>
 
-     </appender>
+   </appender>
 
-     <root level="info">          
-          <appender-ref ref="STDOUT" />
-          <appender-ref ref="FILE" />
-          <appender-ref ref="stash" />
-      </root>
+   <root level="info">          
+         <appender-ref ref="STDOUT" />
+         <appender-ref ref="FILE" />
+         <appender-ref ref="LOGSTASH" />
+   </root>
 
-     <logger name="com.graphaware" level="DEBUG">
-             <appender-ref ref="STDOUT" />
-             <appender-ref ref="FILE" />
-             <appender-ref ref="stash" />
-     </logger>
+   <logger name="com.graphaware" level="DEBUG">
+         <appender-ref ref="STDOUT" />
+         <appender-ref ref="FILE" />
+         <appender-ref ref="stash" />
+   </logger>
 
 </configuration>
 ```
